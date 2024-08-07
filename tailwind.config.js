@@ -4,8 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        'brand-yellow': '#D6802A',
-        'brand-blue': '#0ea5e9'
+        deepBlue: '#1E3A8A',
+        cyan: '#06B6D4',
+        orange: '#F97316'
       }
     }
   },

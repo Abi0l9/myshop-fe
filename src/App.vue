@@ -1,5 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import HeaderComp from '@/components/Layouts/HeaderComp.vue'
+import FooterComp from '@/components/Layouts/FooterComp.vue'
+</script>
 
 <template>
-  <div class="text-3xl">Home</div>
+  <HeaderComp />
+  <RouterView />
+  <FooterComp />
 </template>
