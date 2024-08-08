@@ -3,7 +3,14 @@ export type ObjProp = {
   value: string
 }
 
-export interface IProduct {
+export interface IProductForm {
+  name: string
+  description: string
+  image: string
+  price: string
+}
+
+export interface IProduct extends IProductForm {
   id?: string
   name: string
   description: string

@@ -1,8 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import ProductsView from '@/views/ProductsView.vue'
 import SignInView from '@/views/SignInView.vue'
 import SignUpView from '@/views/SignUpView.vue'
+import AddProductView from '@/views/AddProductView.vue'
+import OneProductView from '@/views/OneProductView.vue'
+import EditProductView from '@/views/EditProductView.vue'
+import ResultView from '@/views/ResultView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,7 +13,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: ProductsView
     },
     {
       path: '/products',
@@ -26,6 +29,26 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: SignInView
+    },
+    {
+      path: '/add-product',
+      name: 'add-product',
+      component: AddProductView
+    },
+    {
+      path: '/products/:id',
+      name: 'single-product',
+      component: OneProductView
+    },
+    {
+      path: '/products/:id/edit',
+      name: 'edit-single-product',
+      component: EditProductView
+    },
+    {
+      path: '/products/query',
+      name: 'query',
+      component: ResultView
     }
     // {
     //   path: '/about',

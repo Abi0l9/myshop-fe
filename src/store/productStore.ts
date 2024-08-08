@@ -1,22 +1,22 @@
 import type { IProduct } from '@/types'
 import productServices from '@/services/product'
-import { createStore } from 'vuex'
+import type { Module } from 'vuex'
 
 type State = {
   products: IProduct[]
   product: IProduct | null
 }
 
-const store = createStore<State>({
+const store: Module<State, any> = {
   state: {
     products: [],
     product: null
   },
   mutations: {
-    getProducts: (state, payload: IProduct[]) => {
+    setProducts: (state, payload: IProduct[]) => {
       state.products = payload
     },
-    getOneProduct: (state, payload: IProduct) => {
+    setOneProduct: (state, payload: IProduct) => {
       state.product = payload
     }
   },
@@ -24,7 +24,9 @@ const store = createStore<State>({
     fetchProducts: async ({ commit }) => {
       try {
         const res = await productServices.getAllProducts()
-        commit('getProducts', res)
+
+        commit('setProducts', res.products)
+        return res.products
       } catch (e) {
         console.log(e)
       }
@@ -32,7 +34,9 @@ const store = createStore<State>({
     fetchOneProductById: async ({ commit }, productId: string) => {
       try {
         const res = await productServices.getOneProduct({ id: productId })
-        commit('getOneProduct', res)
+        commit('setOneProduct', res.product)
+
+        return res.product
       } catch (e) {
         console.log(e)
       }
@@ -42,6 +46,6 @@ const store = createStore<State>({
     singleProduct: (state) => state.product,
     allProducts: (state) => state.products
   }
-})
+}
 
 export default store
